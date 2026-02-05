@@ -5,7 +5,9 @@ CyberDuck ve FileZilla benzeri çift panelli dosya yöneticisi.
 """
 
 import os
+import sys
 import threading
+from pathlib import Path
 from tkinter import messagebox
 
 import ttkbootstrap as ttk
@@ -32,7 +34,23 @@ class CyberDuckApp(ttk.Window):
         )
         self.connector: BaseConnector | None = None
         self.connection_config: dict | None = None
+        self._set_icon()
         self._build_ui()
+
+    def _set_icon(self):
+        """Pencere ikonunu ayarla. assets/icon.png dosyasını kullanır."""
+        if getattr(sys, "frozen", False):
+            base = Path(sys._MEIPASS)
+        else:
+            base = Path(__file__).parent
+        icon_path = base / "assets" / "icon.png"
+        if icon_path.exists():
+            try:
+                from tkinter import PhotoImage
+                img = PhotoImage(file=str(icon_path))
+                self.iconphoto(True, img)
+            except Exception:
+                pass
 
     def _build_ui(self):
         # Üst menü / araç çubuğu

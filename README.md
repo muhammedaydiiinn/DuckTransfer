@@ -54,6 +54,19 @@ Kayıtlı bağlantılar varsa listeden seçip **Yükle** ile formu doldurup bağ
 └── ui/               # Arayüz (paneller, dialoglar)
 ```
 
+## Derleme (tek dosya / .exe / .app)
+
+macOS, Windows veya Linux'ta çalıştır – platformu kendisi algılar:
+
+```bash
+python build.py
+```
+
+PyInstaller kullanıyor. İlk çalıştırmada gerekirse PyInstaller'ı kurar. Çıktı `dist/` klasöründe:
+- **macOS**: `DuckTransfer.app` (onedir – macOS uyumluluğu için)
+- **Windows**: `DuckTransfer.exe` (tek dosya)
+- **Linux**: `DuckTransfer` (tek binary)
+
 ## Gereksinimler
 
 - Python 3.10+

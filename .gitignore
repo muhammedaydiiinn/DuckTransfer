@@ -39,3 +39,8 @@ env/
 # Yerel / test config (proje içinde olsa)
 connections.json
 *.log
+
+# PyInstaller / build çıktıları
+dist/
+build/
+*.spec
